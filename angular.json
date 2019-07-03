@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "untitled": {
+    "filetransfer-ui": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/untitled",
+            "outputPath": "dist/filetransfer-ui",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,6 +24,9 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -58,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "untitled:build"
+            "browserTarget": "filetransfer-ui:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "untitled:build:production"
+              "browserTarget": "filetransfer-ui:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "untitled:build"
+            "browserTarget": "filetransfer-ui:build"
           }
         },
         "test": {
@@ -106,15 +109,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "untitled:serve"
+            "devServerTarget": "filetransfer-ui:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "untitled:serve:production"
+              "devServerTarget": "filetransfer-ui:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "untitled"
+  "defaultProject": "filetransfer-ui"
 }
