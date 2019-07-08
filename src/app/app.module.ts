@@ -8,15 +8,16 @@ import { BrowseComponent } from './browse/browse.component';
 import {Routes, RouterModule} from '@angular/router';
 import {FileUploadModule} from 'primeng/fileupload';
 import {MessageService} from 'primeng/api';
-import {HttpClient, HttpClientModule, HttpHandler} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {FormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
-  {path: 'download', component: DownloadComponent},
-  {path: 'upload', component: UploadComponent},
-  {path: '', component: BrowseComponent },
+  {path: 'app/download', component: DownloadComponent},
+  {path: 'app/upload', component: UploadComponent},
+  {path: 'app', component: BrowseComponent },
+  {path: '', redirectTo: '/app' },
 ];
 
 @NgModule({
