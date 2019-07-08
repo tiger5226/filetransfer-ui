@@ -14,10 +14,9 @@ import {InputTextModule} from 'primeng/inputtext';
 import {FormsModule} from '@angular/forms';
 
 const appRoutes: Routes = [
-  {path: 'app/download', component: DownloadComponent},
-  {path: 'app/upload', component: UploadComponent},
-  {path: 'app', component: BrowseComponent },
-  {path: '', redirectTo: '/app' },
+  {path: 'download', component: DownloadComponent},
+  {path: 'upload', component: UploadComponent},
+  {path: '', component: BrowseComponent },
 ];
 
 @NgModule({
