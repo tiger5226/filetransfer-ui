@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MessageService} from 'primeng/api';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
@@ -13,7 +13,14 @@ export class UploadComponent implements OnInit {
   uploadedFiles: any[] = [];
   baseURL: string;
   uploadURL: string;
-  bucket: string;
+  private bucketValue: string;
+  set bucket(value: string) {
+    this.bucketValue = value;
+    this.uploadURL = this.baseURL + this.bucket;
+  }
+  get bucket() {
+    return this.bucketValue;
+  }
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
@@ -25,7 +32,12 @@ export class UploadComponent implements OnInit {
 
   onBeforeUpload(event) {
     this.uploadURL = this.baseURL + this.bucket;
-    console.log('uploadurl' + this.uploadURL);
+    console.log('BEFOREUPLOAD: uploadurl' + this.uploadURL);
+  }
+
+  onSelect(event) {
+    this.uploadURL = this.baseURL + this.bucket;
+    console.log('ONSELECT uploadurl' + this.uploadURL);
   }
 
 }
