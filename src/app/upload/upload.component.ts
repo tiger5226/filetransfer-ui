@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MessageService} from 'primeng/api';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {FileUpload} from 'primeng/primeng';
 
 @Component({
   selector: 'app-upload',
@@ -9,10 +10,12 @@ import {environment} from '../../environments/environment';
   styleUrls: ['./upload.component.css']
 })
 export class UploadComponent implements OnInit {
+  @ViewChild('uploader', null) uploadComp: FileUpload;
 
   uploadedFiles: any[] = [];
   baseURL: string;
   uploadURL: string;
+  completed = 0;
   private bucketValue: string;
   set bucket(value: string) {
     this.bucketValue = value;
@@ -26,18 +29,15 @@ export class UploadComponent implements OnInit {
 
   ngOnInit() {
     this.baseURL = environment.simplefturl;
-    console.log('baseurl:', this.baseURL);
     this.bucket = 'test';
   }
 
-  onBeforeUpload(event) {
-    this.uploadURL = this.baseURL + this.bucket;
-    console.log('BEFOREUPLOAD: uploadurl' + this.uploadURL);
+  onProgress(event) {
+    this.completed = event.progress;
   }
 
-  onSelect(event) {
-    this.uploadURL = this.baseURL + this.bucket;
-    console.log('ONSELECT uploadurl' + this.uploadURL);
+  onUpload(event) {
+    this.uploadComp.clear();
   }
 
 }

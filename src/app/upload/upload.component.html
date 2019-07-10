@@ -1,12 +1,22 @@
 <div class="p-grid p-justify-center">
   <div class="p-col-4">
-    <p-fileUpload name="file" [url]="uploadURL"
-                  multiple="multiple" maxFileSize="1000000000" [style]="{width: '100%'}">
+    <p-fileUpload #uploader
+                  name="file" [url]="uploadURL"
+                  multiple="multiple"
+                  previewWidth="150"
+                  maxFileSize="1000000000" [style]="{width: '100%'}"
+                  (onProgress)="onProgress($event)"
+                  (onUpload)="onUpload($event)">
       <ng-template pTemplate="toolbar" >
         <div class="p-grid p-justify-center" style="padding-top: 1em">
-          <div class="p-col-12">
+          <div class="p-col-8">
             <div style="text-align: center">
-              <span style="padding-right: 1em">Bucket({{bucket}}):</span><input type="text" pInputText [(ngModel)]="bucket"/>
+              <span style="padding-right: 1em">Bucket</span><input type="text" pInputText [(ngModel)]="bucket"/>
+            </div>
+          </div>
+          <div class="p-col-4">
+            <div style="text-align: center">
+              <span style="padding-right: 1em">Complete: {{completed}}%</span>
             </div>
           </div>
         </div>
