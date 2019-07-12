@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  simplefturl: 'https://filetransfer.nam.dsone.3ds.com/upload?bucket=',
+  simplefturl: '/upload?bucket=',
+  apiURL: 'https://filetransfer.nam.dsone.3ds.com',
 };

@@ -12,6 +12,8 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {FormsModule} from '@angular/forms';
+import {AccordionModule} from 'primeng/primeng';
+import {TableModule} from 'primeng/table';
 
 const appRoutes: Routes = [
   {path: 'download', component: DownloadComponent},
@@ -37,6 +39,8 @@ const appRoutes: Routes = [
       {enableTracing: true} // <-- debugging purposes only
     ),
     FormsModule,
+    AccordionModule,
+    TableModule,
   ],
   providers: [ HttpClient, MessageService],
   bootstrap: [AppComponent]

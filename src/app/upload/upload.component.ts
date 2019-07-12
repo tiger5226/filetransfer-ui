@@ -28,7 +28,7 @@ export class UploadComponent implements OnInit {
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   ngOnInit() {
-    this.baseURL = environment.simplefturl;
+    this.baseURL = environment.apiURL + environment.simplefturl;
     this.bucket = 'test';
   }
 
