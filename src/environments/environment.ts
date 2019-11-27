@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   // Change this if you are working locally to where your local version of simpleft is
   simplefturl: '/upload?bucket=',
-  apiURL: 'http://filetransfer.nam.dsone.3ds.com/api',
+  // apiURL: 'https://filetransfer.nam.dsone.3ds.com/api',
+  apiURL: 'http://localhost:9999',
 };
 
 /*

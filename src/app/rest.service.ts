@@ -23,7 +23,7 @@ export class RestService {
   private handleError<T>(operation = 'operation', result?: T) {
     const messageService = this.messageService;
     return (responseError: any): Observable<T> => {
-      messageService.add({severity: 'error', summary: 'Error', detail: responseError.error.error});
+      messageService.add({severity: 'error', summary: responseError.error.error, detail: JSON.stringify(responseError.error.data)});
       // TODO: send the error to remote logging infrastructure
       console.log(responseError); // log to console instead
       // Let the app keep running by returning an empty result.

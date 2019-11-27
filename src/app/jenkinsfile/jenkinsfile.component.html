@@ -1,0 +1,75 @@
+<div class="p-grid p-col-align-center">
+  <div class="p-col-12">
+    <div class="p-grid">
+      <span class="p-col-12 p-col-align-center p-justify-center " style="font-size:300%;text-align: center">Modify and Commit your First Jenkinsfile</span>
+      <span class="p-col-12 p-col-align-center ui-widget" style="text-align: center"  *ngIf="!selectedJenkinsfile">Choose a template Jenkinsfile to add to your repository</span>
+    </div>
+  </div>
+  <div class="p-col-5">
+
+  </div>
+  <div class="p-col-7 p-col-align-center ui-widget">
+    <div class="p-grid">
+      <p-dropdown class="p-col-12 p-col-align-center ui-widget" optionLabel="Name"  [autoDisplayFirst]="false" [style]="{'width':'300px'}" [options]="jenkinsfileList" [(ngModel)]="selectedJenkinsfile"></p-dropdown>
+    </div>
+  </div>
+  <div class="p-col-12 p-col-align-center">
+    <div class="p-grid">
+      <div class="p-col-2 ui-widget" *ngIf="selectedJenkinsfile">
+        <p-fieldset legend="Project & Repository">
+          <div class="p-grid">
+            <div  class="p-col-12 ui-widget">
+              <span class="p-col-12 ui-widget">Enter your project key and repo. Enter a branch name you would like to add the Jenkinsfile to. Make sure you edit it for your project.</span>
+            </div>
+            <div  class="p-col-12 ui-widget">
+              <input class="p-col-12 ui-widget" type="text" pInputText [(ngModel)]="user" placeholder="Trigram"/>
+            </div>
+            <div  class="p-col-12 ui-widget">
+              <input class="p-col-12 ui-widget" type="text" pInputText [(ngModel)]="projectKey" placeholder="Project Key"/>
+            </div>
+            <div  class="p-col-12 ui-widget">
+              <input class="p-col-12 ui-widget" type="text" pInputText [(ngModel)]="repo" placeholder="repository"/>
+            </div>
+            <div  class="p-col-12 ui-widget">
+              <input class="p-col-12 ui-widget" type="text" pInputText [(ngModel)]="branch" placeholder="branch"/>
+            </div>
+            <div  class="p-col-12 ui-widget p-justify-center">
+              <p-button class="p-justify-center" label="Publish Jenkinsfile to branch" (onClick)="addJenkinsfile($event)"></p-button>
+            </div>
+          </div>
+        </p-fieldset>
+      </div>
+      <div class="p-col-8 p-col-align-center" *ngIf="selectedJenkinsfile">
+        <p-inplace closable="closable">
+            <span pInplaceDisplay>
+                <prism-block [code]="selectedJenkinsfile.Content" [language]="'json'"></prism-block>
+            </span>
+          <div  [style]="{'width':'100%'}"  pInplaceContent>
+            <textarea [rows]="20" [cols]="105" pInputTextarea [(ngModel)]="selectedJenkinsfile.Content" (ngModelChange)="selectedJenkinsfile.Content = $event"></textarea>
+          </div>
+        </p-inplace>
+      </div>
+      <div class="p-col-2 ui-widget" *ngIf="selectedJenkinsfile">
+        <p-fieldset legend="Instructions">
+          Before proceeding please make sure you have added the delmia.dqci@3ds.com account to your repository. If not
+          then we will not be able to automatically add the Jenkinsfile for you.
+          You will want to edit a few things to the left. The Quintiq version should be aligned with your model
+          version. If you don't have unit tests you can turn that off.
+          <br><br>
+          The project key can be found at <a>https://repository.quintiq.nl/projects</a>
+          <br><br>
+          The repository is the same name in the url if you go to your repo in bitbucket.
+          <br><br>
+          The branch you choose is the branch it will add the Jenkinsfile to. If the branch doesn't exist yet, you will
+          get an error. If the branch already contains a Jenkinsfile in the root it will also error.
+          <br><br>
+          Last but not least, if you have already done this, please don't try to edit and push it again (due to the
+          rules above). You can do this directly in bitbucket yourself now. Also don't forget to create a pull request
+          and merge it so it is in your main branch and everyone else can benefit.
+        </p-fieldset>
+      </div>
+    </div>
+  </div>
+</div>
+
+
