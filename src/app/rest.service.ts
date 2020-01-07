@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { map, catchError, tap } from 'rxjs/operators';
+import {Observable, of, throwError} from 'rxjs';
+import {map, catchError, tap, finalize, last} from 'rxjs/operators';
 import {MessageService} from 'primeng/api';
 import {environment} from '../environments/environment';
+import {Message} from 'primeng/components/common/message';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,8 @@ export class RestService {
       // TODO: send the error to remote logging infrastructure
       console.log(responseError); // log to console instead
       // Let the app keep running by returning an empty result.
-      return of(result as T);
+      // return of(result as T);
+      return throwError(responseError);
     };
   }
 
@@ -67,7 +69,8 @@ export class RestService {
     // params = params.set('auth_token', this.token);
     const url = this.endpoint + '/' + resource + '/' + action;
     return this.http.get(url, {headers: null, params}).pipe(
-      map(this.extractData), catchError(this.handleError<any>(resource + '/' + action))
+      map(this.extractData),
+      catchError(this.handleError<any>(resource + '/' + action))
     );
   }
 

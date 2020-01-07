@@ -12,9 +12,10 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {InputTextModule} from 'primeng/inputtext';
 import {FormsModule} from '@angular/forms';
-import {AccordionModule, DropdownModule, FieldsetModule, InplaceModule} from 'primeng/primeng';
+import {AccordionModule, DropdownModule, FieldsetModule, InplaceModule, MenubarModule} from 'primeng/primeng';
 import {TableModule} from 'primeng/table';
 import { JenkinsfileComponent } from './jenkinsfile/jenkinsfile.component';
+
 /* Import the language you need to highlight */
 import 'prismjs';
 import 'prismjs/components/prism-json.js';
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
     DropdownModule,
     FieldsetModule,
     ToastModule,
+    MenubarModule,
   ],
   providers: [ HttpClient, MessageService],
   bootstrap: [AppComponent]

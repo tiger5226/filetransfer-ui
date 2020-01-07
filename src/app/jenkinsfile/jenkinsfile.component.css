@@ -1,3 +1,27 @@
 :host ::ng-deep .ui-inplace-display {
   display: block;
 }
+
+a {
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.code-editor {
+  width: 100%;
+  height: 1000px;
+}
+
+.code-display-wrapper {
+  padding-top: 1.2em; /* Set to match the default padding of primeng fieldsets... */
+}

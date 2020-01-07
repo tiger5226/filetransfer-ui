@@ -27,6 +27,10 @@ export class BrowseComponent implements OnInit {
   public loadBuckets() {
     const newBuckets = [];
     this.rest.get('bucket', 'list', new HttpParams()).subscribe((response) => {
+      if (!response.data) {
+        return;
+      }
+
       response.data.forEach((b) => {
         console.log('Bucket:', b);
         const bucket = new Bucket();

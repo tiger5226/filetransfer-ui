@@ -2,3 +2,7 @@
 body .ui-fileupload .ui-fileupload-buttonbar{
   text-align: center;
 }
+
+.outlet-wrapper {
+  margin-top: .5em;
+}
