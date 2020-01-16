@@ -1,5 +1,5 @@
 <div class="p-grid p-justify-center">
-  <div class="p-col-5">
+  <div class="p-col-5" *ngIf="buckets && buckets.length > 0; else noBuckets">
     <p-accordion>
       <p-accordionTab *ngFor="let bucket of buckets" header="{{bucket.Name}}:&nbsp;&nbsp;&nbsp;{{bucket.Header}}">
         <p-table [columns]="bucketFileColumns" [value]="bucket.Files">
@@ -26,4 +26,9 @@
       </p-accordionTab>
     </p-accordion>
   </div>
+  <ng-template #noBuckets>
+    <div class="p-col-5" >
+      <p-messages [value]="[{severity: 'error', summary: 'No Files', detail: 'No files were found in storage.'}]"[enableService]="false" [closable]="false"></p-messages>
+    </div>
+  </ng-template>
 </div>

@@ -1,4 +1,4 @@
-<div class="p-grid p-col-align-center">
+<div class="p-grid p-col-align-center p-nogutter">
   <div class="p-col-12">
     <div class="p-grid">
       <span class="p-col-12 p-col-align-center p-justify-center " style="font-size:300%;text-align: center">Modify and Commit your First Jenkinsfile</span>
@@ -14,7 +14,7 @@
     </div>
   </div>
   <div class="p-col-12 p-col-align-center">
-    <div class="p-grid">
+    <div class="p-grid p-nogutter">
       <div class="p-col-2 ui-widget" *ngIf="selectedJenkinsfile">
         <p-fieldset legend="Project & Repository">
           <div class="p-grid">
@@ -22,30 +22,42 @@
               <span class="p-col-12 ui-widget">Enter your project key and repository. Enter a branch name you would like to add the Jenkinsfile to. Make sure you edit it for your project.</span>
             </div>
             <div  class="p-col-12 ui-widget">
-              <input class="p-col-12 ui-widget" type="text" pInputText [(ngModel)]="user" placeholder="Trigram"/>
+              <label>
+                <input class="p-col-12 ui-widget" type="text" pInputText [(ngModel)]="user" placeholder="Trigram"/>
+              </label>
             </div>
             <div  class="p-col-12 ui-widget">
-              <input class="p-col-12 ui-widget" type="text" pInputText [(ngModel)]="projectKey" placeholder="Project Key"/>
+              <label>
+                <input class="p-col-12 ui-widget" type="text" pInputText [(ngModel)]="projectKey" placeholder="Project Key"/>
+              </label>
             </div>
             <div  class="p-col-12 ui-widget">
-              <input class="p-col-12 ui-widget" type="text" pInputText [(ngModel)]="repo" placeholder="repository"/>
+              <label>
+                <input class="p-col-12 ui-widget" type="text" pInputText [(ngModel)]="repo" placeholder="repository"/>
+              </label>
             </div>
             <div  class="p-col-12 ui-widget">
-              <input class="p-col-12 ui-widget" type="text" pInputText [(ngModel)]="branch" placeholder="branch"/>
+              <label>
+                <input class="p-col-12 ui-widget" type="text" pInputText [(ngModel)]="branch" placeholder="branch"/>
+              </label>
             </div>
             <div  class="p-col-12 ui-widget p-justify-center">
-              <p-button class="p-justify-center" label="Publish Jenkinsfile to branch" (onClick)="addJenkinsfile($event)"></p-button>
+              <p-button class="p-justify-center" label="Publish Jenkinsfile to branch" (onClick)="addJenkinsfile()"></p-button>
             </div>
           </div>
         </p-fieldset>
       </div>
-      <div class="p-col-8 p-col-align-center" *ngIf="selectedJenkinsfile">
-        <p-inplace closable="closable">
-            <span pInplaceDisplay>
-                <prism-block [code]="selectedJenkinsfile.Content" [language]="'json'"></prism-block>
-            </span>
-          <div  [style]="{'width':'100%'}"  pInplaceContent>
-            <textarea [rows]="20" [cols]="105" pInputTextarea [(ngModel)]="selectedJenkinsfile.Content" (ngModelChange)="selectedJenkinsfile.Content = $event"></textarea>
+      <div class="p-col-8" *ngIf="selectedJenkinsfile">
+        <p-inplace [closable]="true">
+          <span pInplaceDisplay>
+              <prism-block [code]="selectedJenkinsfile.Content" [language]="'json'"></prism-block>
+          </span>
+          <div class="code-display-wrapper"  pInplaceContent>
+            <div>
+              <label>
+                <textarea class="code-editor" [(ngModel)]="selectedJenkinsfile.Content" (ngModelChange)="selectedJenkinsfile.Content = $event"></textarea>
+              </label>
+            </div>
           </div>
         </p-inplace>
       </div>
@@ -56,7 +68,7 @@
           You will want to edit a few things to the left. The Quintiq version should be aligned with your model
           version. If you don't have unit tests you can turn that off.
           <br><br>
-          The project key can be found at <a>https://repository.quintiq.nl/projects</a>
+          The project key can be found at <a [href]="repositoryProjectsLink">here</a>.
           <br><br>
           The repository is the same name in the url if you go to your repo in bitbucket.
           <br><br>
