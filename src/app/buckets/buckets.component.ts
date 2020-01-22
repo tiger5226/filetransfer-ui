@@ -1,36 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Bucket} from './model/bucket';
 import {HttpParams} from '@angular/common/http';
 import {RestService} from '../rest.service';
 import {MessageService} from 'primeng/api';
 import {BucketFile} from './model/bucket-file';
 import {environment} from '../../environments/environment';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-browse',
-  templateUrl: './browse.component.html',
-  styleUrls: ['./browse.component.css']
+  templateUrl: './buckets.component.html',
+  styleUrls: ['./buckets.component.css']
 })
-export class BrowseComponent implements OnInit {
+export class BucketsComponent implements OnInit {
   buckets: Bucket[];
+  @Input()
+  bucketFilter: string;
   bucketFileColumns = [
     {field: 'Name', header: 'Name'},
     {field: 'Size', header: 'Size'},
     {field: 'ModifiedAt', header: 'ModifiedAt'}];
 
-  constructor(public rest: RestService, private messageService: MessageService) { }
+  constructor(public rest: RestService, private messageService: MessageService, private activatedroute: ActivatedRoute) {
+    this.activatedroute.paramMap.subscribe(params => {
+      if (params.has('id')) {
+        this.bucketFilter = String(params.get('id'));
+      }
+
+      this.loadBuckets();
+    });
+  }
 
   ngOnInit() {
-    this.loadBuckets();
+    // this.loadBuckets();
   }
 
   public loadBuckets() {
     const newBuckets = [];
-    this.rest.get('bucket', 'list', new HttpParams()).subscribe((response) => {
+    let params = new HttpParams();
+
+    if (this.bucketFilter) {
+      params = params.set('bucket', this.bucketFilter);
+    }
+
+    this.rest.get('bucket', 'list', params).subscribe((response) => {
       if (!response.data) {
         return;
       }
-
       response.data.forEach((b) => {
         console.log('Bucket:', b);
         const bucket = new Bucket();

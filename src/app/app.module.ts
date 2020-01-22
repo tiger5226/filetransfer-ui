@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { UploadComponent } from './upload/upload.component';
 import { DownloadComponent } from './download/download.component';
-import { BrowseComponent } from './browse/browse.component';
+import { BucketsComponent } from './buckets/buckets.component';
 import {Routes, RouterModule} from '@angular/router';
 import {FileUploadModule} from 'primeng/fileupload';
 import {MessageService} from 'primeng/api';
@@ -26,7 +26,9 @@ const appRoutes: Routes = [
   {path: 'download', component: DownloadComponent},
   {path: 'upload', component: UploadComponent},
   {path: 'jenkinsfile', component: JenkinsfileComponent},
-  {path: '', component: BrowseComponent },
+  {path: '', component: BucketsComponent },
+  {path: 'buckets', component: BucketsComponent },
+  {path: 'buckets/:id', component: BucketsComponent },
 ];
 
 @NgModule({
@@ -34,7 +36,7 @@ const appRoutes: Routes = [
     AppComponent,
     UploadComponent,
     DownloadComponent,
-    BrowseComponent,
+    BucketsComponent,
     JenkinsfileComponent,
     PrismComponent
   ],

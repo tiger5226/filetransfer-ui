@@ -16,7 +16,13 @@ export class AppComponent {
       label: 'Upload', routerLink: ['/upload']
     },
     {
-      label: 'DQ-CI', url: 'https://jenkins.nam.dsone.3ds.com/'
+      label: 'Jenkins', url: 'https://jenkins.nam.dsone.3ds.com/'
+    },
+    {
+      label: 'Docs', url: 'https://docs.nam.dsone.3ds.com/'
+    },
+    {
+      label: 'Uptime', url: 'https://uptime.nam.dsone.3ds.com/'
     }
   ];
 }
