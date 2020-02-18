@@ -63,21 +63,37 @@
       </div>
       <div class="p-col-2 ui-widget" *ngIf="selectedJenkinsfile">
         <p-fieldset legend="Instructions">
-          Before proceeding please make sure you have added the delmia.dqci@3ds.com account to your repository. If not
-          then we will not be able to automatically add the Jenkinsfile for you.
-          You will want to edit a few things to the left. The Quintiq version should be aligned with your model
-          version. If you don't have unit tests you can turn that off.
-          <br><br>
-          The project key can be found at <a [href]="repositoryProjectsLink">here</a>.
-          <br><br>
-          The repository is the same name in the url if you go to your repo in bitbucket.
-          <br><br>
-          The branch you choose is the branch it will add the Jenkinsfile to. If the branch doesn't exist yet, you will
-          get an error. If the branch already contains a Jenkinsfile in the root it will also error.
-          <br><br>
-          Last but not least, if you have already done this, please don't try to edit and push it again (due to the
-          rules above). You can do this directly in bitbucket yourself now. Also don't forget to create a pull request
-          and merge it so it is in your main branch and everyone else can benefit.
+          <p>
+            Before proceeding please make sure you have added the delmia.dqci@3ds.com account to your repository. If not
+            then we will not be able to automatically add the Jenkinsfile for you.
+            You will want to edit a few things to the left. The Quintiq version should be aligned with your model
+            version. If you don't have unit tests you can turn that off.
+          </p>
+          <br>
+          <p>
+            The project key can be found at <a [href]="repositoryProjectsLink">here</a>.
+          </p>
+          <p>
+            <b>
+              Note: If you are using a personal account repository, the key will be <i>~&lt;your username&gt;</i>.
+              For example, bitbucket account ABC1 would have a project key of <i>~ABC1</i>.
+            </b>
+          </p>
+          <br>
+          <p>
+            The repository is the same name in the url if you go to your repo in bitbucket.
+          </p>
+          <br>
+          <p>
+            The branch you choose is the branch it will add the Jenkinsfile to. If the branch doesn't exist yet, you will
+            get an error. If the branch already contains a Jenkinsfile in the root it will also error.
+          </p>
+          <br>
+          <p>
+            Last but not least, if you have already done this, please don't try to edit and push it again (due to the
+            rules above). You can do this directly in bitbucket yourself now. Also don't forget to create a pull request
+            and merge it so it is in your main branch and everyone else can benefit.
+          </p>
         </p-fieldset>
       </div>
     </div>
